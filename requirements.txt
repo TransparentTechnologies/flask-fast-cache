@@ -1,0 +1,4 @@
+Flask==0.12.2
+redis==2.10.6
+mockredispy==2.9.3
+mock==2.0.0
