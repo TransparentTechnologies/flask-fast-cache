@@ -1,7 +1,5 @@
 """Unit Test for Cloud Realty"""
 import os
-import unittest
-from flask import url_for
 from tests import BaseTest
 
 
@@ -48,27 +46,28 @@ class TestFileCache(BaseTest, CommonTests):
         os.environ['CACHE_TYPE'] = 'file'
         super().setUp()
 
+
 class TestNullCache(BaseTest, CommonTests):
 
     def setUp(self):
         os.environ['CACHE_TYPE'] = 'null'
         super().setUp()
-        
+
     def test_get_cache(self):
         set_cache = self.cache.set('test_key', ['a', 'b', 'c'])
         self.assertTrue(set_cache)
         get_cache = self.cache.get('test_key')
         self.assertFalse(get_cache)
-    
+
     def test_delete_cache(self):
         pass
-        
+
     def test_delete_wildcard(self):
-        pass    
-        
+        pass
+
+
 class TestRedisCache(BaseTest, CommonTests):
 
     def setUp(self):
         os.environ['CACHE_TYPE'] = 'redis'
         super().setUp()
-        

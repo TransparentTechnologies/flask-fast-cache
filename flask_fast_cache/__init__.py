@@ -57,9 +57,9 @@ class FastNullCache(NullCache):
 
 
 class FastRedisCache(RedisCache):
-    from redis.connection import ResponseError
 
     def delete_wildard(self, key):
+        from redis.connection import ResponseError
         try:
             self._client.eval(
                 '''return redis.call('del', unpack(redis.call('keys', ARGV[1])))''', 0, '{}:*'.format(key))
